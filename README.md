@@ -8,7 +8,7 @@ An open‑source tool that lets you emulate common attacks and automatically che
 4. Remove write permissions from groups and other users ```sudo chmod go-w filebeat.yml```
 5. Run ```sudo docker compose up -d```
 6. Confirm containers are running ```sudo docker ps```
-7. Navigate to Elastic Server ```http://localhost:5601```
+7. Navigate to Elastic ```http://localhost:5601```
 8. Select Stack Management > Data Views > Create Data View
 9. Set index pattern to  ```dvwa-raw-*```
 10. Select ```Save data view to Kibana```
