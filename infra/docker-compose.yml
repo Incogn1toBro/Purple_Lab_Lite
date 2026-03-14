@@ -33,6 +33,19 @@ services:
       - MYSQL_PASSWORD=Password1!
       - MYSQL_PASS=Password1!
       - MYSQL_DB=dvwa
+    volumes:
+      - dvwa-logs:/var/log/apache2  
+
+  filebeat:
+    image: docker.elastic.co/beats/filebeat:9.3.0
+    container_name: filebeat
+    user: root  # Needed to read DVWA logs
+    volumes:
+      - ./filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
+      - dvwa-logs:/var/log/dvwa  
+    depends_on:
+      - elk-es
 
 volumes:
   es-data:
+  dvwa-logs:  
