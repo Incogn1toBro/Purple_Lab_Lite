@@ -1,0 +1,15 @@
+filebeat.inputs:
+- type: log
+  enabled: true
+  paths:
+    - /var/log/dvwa/*.log
+  fields:
+    log_source: dvwa
+  fields_under_root: true
+
+output.elasticsearch:
+  hosts: ["elk-es:9200"]
+  index: "dvwa-logs-%{+yyyy.MM.dd}"
+
+setup.template.name: "dvwa"
+setup.template.pattern: "dvwa-*"
