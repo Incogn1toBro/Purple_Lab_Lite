@@ -39,7 +39,7 @@ services:
   filebeat:
     image: docker.elastic.co/beats/filebeat:9.3.0
     container_name: filebeat
-    user: root  # Needed to read DVWA logs
+    user: root  
     volumes:
       - ./filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
       - dvwa-logs:/var/log/dvwa  
