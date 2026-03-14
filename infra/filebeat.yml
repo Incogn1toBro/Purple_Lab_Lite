@@ -1,21 +1,12 @@
 filebeat.inputs:
 - type: filestream
-  id: dvwa-apache-logs
-  enabled: true
+  id: dvwa-access
   paths:
-    - /var/log/apache2/access.log
+    - /var/log/apache2/*.log
   fields:
-    log_source: dvwa-apache
+    log_type: dvwa-apache
   fields_under_root: true
-  multiline:
-    pattern: '^\S+ - - \['  
-    negate: true
-    match: after
-  parse_apache_logs: true  
 
 output.elasticsearch:
   hosts: ["elk-es:9200"]
-  index: "dvwa-logs-%{+yyyy.MM.dd}"
-
-setup.template.name: "dvwa"
-setup.template.pattern: "dvwa-*"
+  index: "dvwa-raw-%{+yyyy.MM.dd}"
