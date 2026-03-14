@@ -1,0 +1,38 @@
+version: "3.9"
+
+services:
+  elk-es:
+    image: docker.elastic.co/elasticsearch/elasticsearch:9.3.0
+    container_name: elk-es
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - ES_JAVA_OPTS=-Xms1g -Xmx1g
+    ports:
+      - "9200:9200"
+    volumes:
+      - es-data:/usr/share/elasticsearch/data
+
+  elk-kibana:
+    image: docker.elastic.co/kibana/kibana:9.3.0
+    container_name: elk-kibana
+    environment:
+      - ELASTICSEARCH_HOSTS=http://elk-es:9200
+    ports:
+      - "5601:5601"
+    depends_on:
+      - elk-es
+
+  dvwa:
+    image: vulnerables/web-dvwa
+    container_name: dvwa
+    ports:
+      - "8080:80"
+    environment:
+      - MYSQL_USER=dvwa
+      - MYSQL_PASSWORD=Password1!
+      - MYSQL_PASS=Password1!
+      - MYSQL_DB=dvwa
+
+volumes:
+  es-data:
