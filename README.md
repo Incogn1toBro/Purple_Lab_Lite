@@ -4,7 +4,9 @@ An open‑source tool that lets you emulate common attacks and automatically che
 # Installation Instructions
 1. Install Docker (ideally in VM)
 2. Pull GitHub repo ```git clone https://github.com/Incogn1toBro/Purple_Lab_Lite```
-3. Run ```sudo docker compose up -d```
-4. Confirm containers are running ```sudo docker ps```
-5. Navigate to Elastic Server ```http://localhost:5601```
-6. Navigate to DVWA Server ```http://localhost:8080```
+3. Set owner of filebeat.yml to root ```sudo chown root filebeat.yml```
+4. Remove write permissions from groups and other users ```sudo chmod go-w filebeat.yml```
+5. Run ```sudo docker compose up -d```
+6. Confirm containers are running ```sudo docker ps```
+7. Navigate to Elastic Server ```http://localhost:5601```
+8. Navigate to DVWA Server ```http://localhost:8080```
