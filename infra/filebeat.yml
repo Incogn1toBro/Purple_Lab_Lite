@@ -3,7 +3,7 @@ filebeat.inputs:
   id: dvwa-logs
   enabled: true
   paths:
-    - /var/log/dvwa/*.log
+    - /var/log/apache2/*.log
   fields:
     log_source: dvwa
   fields_under_root: true
