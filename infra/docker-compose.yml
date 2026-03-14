@@ -42,7 +42,7 @@ services:
     user: root  
     volumes:
       - ./filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
-      - dvwa-logs:/var/log/dvwa  
+      - dvwa-logs:/var/log/apache2
     depends_on:
       - elk-es
 
