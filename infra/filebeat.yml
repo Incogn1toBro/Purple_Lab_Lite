@@ -1,11 +1,17 @@
 filebeat.inputs:
-- type: log
+- type: filestream
+  id: dvwa-logs
   enabled: true
   paths:
     - /var/log/dvwa/*.log
   fields:
     log_source: dvwa
   fields_under_root: true
+  parsers:
+    - ndjson:
+        target: ""
+        message_key: message
+        target_index: 0
 
 output.elasticsearch:
   hosts: ["elk-es:9200"]
