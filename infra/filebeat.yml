@@ -10,3 +10,6 @@ filebeat.inputs:
 output.elasticsearch:
   hosts: ["elk-es:9200"]
   index: "dvwa-raw-%{+yyyy.MM.dd}"
+
+setup.template.name: "dvwa"
+setup.template.pattern: "dvwa-*"
