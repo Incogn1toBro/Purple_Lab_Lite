@@ -2,6 +2,8 @@
 An open‑source tool that lets you emulate common attacks and automatically check whether the detections fired, then produces a simple HTML report.
 
 # Installation Instructions
+PLEASE NOTE: This deployment contains a highly vulnerable web server. It is within the users best interest to utilise a host only network when working with this instance.
+
 1. Install Docker (ideally in VM)
 2. Pull GitHub repo ```git clone https://github.com/Incogn1toBro/Purple_Lab_Lite```
 3. Set owner of filebeat.yml to root ```sudo chown root ./Purple_Lab_Lite/infra/filebeat.yml```
