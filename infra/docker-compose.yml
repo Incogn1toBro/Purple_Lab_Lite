@@ -47,13 +47,15 @@ services:
       - elk-es
 
   attacker:
-    image: kalilinux/kali-rolling:latest
+    build: .
     container_name: attacker
     volumes:
       - ./attack-scripts:/scripts:ro
-    command: sleep infinity
     stdin_open: true
     tty: true
+    cap_add:
+      - NET_RAW 
+      - NET_ADMIN
 
 volumes:
   es-data:
