@@ -1,6 +1,6 @@
 #!/bin/bash
 
-TARGET="DVWA IP ADDRESS:8080"
+TARGET="INSERT DVWA IP ADDRESS:8080"
 USERNAME="admin"
 PASSWORD="password"
 COOKIE_JAR="/tmp/dvwa_cookies.txt"
