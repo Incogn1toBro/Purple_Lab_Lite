@@ -46,6 +46,15 @@ services:
     depends_on:
       - elk-es
 
+  attacker:
+    image: kalilinux/kali-rolling:latest
+    container_name: attacker
+    volumes:
+      - ./attack-scripts:/scripts:ro
+    command: sleep infinity
+    stdin_open: true
+    tty: true
+
 volumes:
   es-data:
   dvwa-logs:  
