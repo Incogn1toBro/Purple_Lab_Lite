@@ -8,4 +8,4 @@ echo "=== 2. Web Fingerprint ==="
 curl -s -A "Mozilla/5.0 (Nmap NSE)" http://$TARGET:8080/ | head -10
 
 echo "=== 3. DVWA Directory Check ==="
-curl -s http://$TARGET:8080/dvwa/setup.php | grep -i dvwa
+curl -s http://$TARGET:8080/setup.php | grep -i dvwa
