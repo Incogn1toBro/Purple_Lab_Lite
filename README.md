@@ -163,7 +163,7 @@ Purple_Lab_Lite/
     ├── attack-scripts/
     │   ├── sqli_attack.sh      # SQL injection via curl (T1190)
     │   ├── port_scan.sh        # Network recon via nmap (T1046)
-    │   └── bruteforce_attack.sh# HTTP brute force via curl (T1110.001)
+    │   └── bruteforce_attack.sh   # HTTP brute force via curl (T1110.001)
 ```
 
 ---
