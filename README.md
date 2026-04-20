@@ -21,5 +21,5 @@ PLEASE NOTE: This deployment contains a highly vulnerable web server. It is with
 15. Sign in ```admin:password```
 16. Confirm data appears in Elastic under ```Discover```
 17. Add your DVWA IP to whichever ```attack-script``` you plan to utilise
-18. Execute chosen attack-script ```sudo docker exec -it attacker /script/CHOSEN ATTACK SCRIPT.sh```
+18. Execute chosen attack-script ```sudo docker exec -it attacker /scripts/CHOSEN ATTACK SCRIPT.sh```
 19. Analyse attack within Elastic under ```message```
