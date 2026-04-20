@@ -1,6 +1,6 @@
 # 🟣 Purple Lab Lite
 
-> A lightweight, Docker-based purple team detection lab. Emulate common attacks against a vulnerable target, ship logs to Elastic, and automatically score whether your detections fired — all in a single `docker compose up`.
+> A lightweight, Docker-based purple team detection lab. Emulate common attacks against a vulnerable target, ship logs to Elastic and automatically score whether your detections fired — all in a single `docker compose up`.
 
 ![License](https://img.shields.io/badge/license-MIT-purple)
 ![Docker](https://img.shields.io/badge/docker-required-blue)
@@ -15,27 +15,27 @@ This deployment contains a **highly vulnerable web server (DVWA)**. Always run t
 
 ---
 
-## What Is This?
+## What is This?
 
-Purple Lab Lite bridges the gap between offensive emulation and defensive validation. You run an attack script, and the lab tells you whether your SIEM caught it — giving you a repeatable, measurable feedback loop for detection engineering.
+Purple Lab Lite bridges the gap between offensive emulation and defensive validation. You run an attack script and the lab tells you whether your SIEM caught it. This provides a repeatable, measurable feedback loop for detection engineering.
 
 ```
 ┌─────────────────────────────────────────────────────┐
-│                  Docker Network                      │
-│                                                      │
+│                  Docker Network                     │
+│                                                     │
 │  ┌──────────┐   attacks   ┌──────────────────────┐  │
 │  │ attacker │ ──────────► │  DVWA (victim app)   │  │
-│  │ container│             │  localhost:8080       │  │
+│  │ container│             │  localhost:8080      │  │
 │  └──────────┘             └──────────┬───────────┘  │
-│                                      │ logs          │
-│                              ┌───────▼──────┐        │
-│                              │   Filebeat   │        │
-│                              └───────┬──────┘        │
-│                                      │               │
-│                              ┌───────▼──────┐        │
-│                              │Elastic/Kibana│        │
-│                              │localhost:5601│        │
-│                              └──────────────┘        │
+│                                      │ logs         │
+│                              ┌───────▼──────┐       │
+│                              │   Filebeat   │       │
+│                              └───────┬──────┘       │
+│                                      │              │
+│                              ┌───────▼──────┐       │
+│                              │Elastic/Kibana│       │
+│                              │localhost:5601│       │
+│                              └──────────────┘       │
 └─────────────────────────────────────────────────────┘
 ```
 
@@ -102,7 +102,7 @@ sudo docker ps          # confirm all containers are running
 Open each attack script and set the `TARGET_IP` variable to your DVWA container's IP, then run:
 
 ```bash
-sudo docker exec -it attacker /script/<ATTACK_SCRIPT>.sh
+sudo docker exec -it attacker /scripts/<ATTACK_SCRIPT>.sh
 ```
 
 ### 6 — Analyse results
@@ -176,20 +176,6 @@ Purple_Lab_Lite/
 - **SQL Injection** — In Kibana Discover, filter `message` for `vulnerabilities/sqli`, `OR+1`, `1%3D1`, or `security=low`. The script fires URL-encoded payloads so look for percent-encoded characters in GET request logs.
 - **Port Scan** — Nmap scans leave characteristic connection bursts from a single source IP hitting many destination ports in a short window. Filter by your attacker container's IP and count unique destination ports.
 - **Brute Force** — Look for rapid repeated `POST /login.php` requests all carrying `Login=Login` and `user_token` parameters. A successful login shows a redirect to `index.php` after a chain of `login.php` redirects.
-
----
-
-## 🛣️ Roadmap
-
-- [x] SQL injection playbook (`sqli_attack.sh`)
-- [x] Port scan playbook (`port_scan.sh`)
-- [x] HTTP brute force playbook (`bruteforce_attack.sh`)
-- [x] Automated HTML detection coverage report (`report.py`)
-- [ ] Wazuh integration as an alternative to raw Elastic
-- [ ] YAML-driven playbook definitions
-- [ ] Cloud scenario playbooks (S3 misconfiguration, SSRF)
-- [ ] CI mode — run all playbooks headlessly and fail if coverage drops below threshold
-- [ ] GitHub Actions workflow for automated lab smoke tests
 
 ---
 
