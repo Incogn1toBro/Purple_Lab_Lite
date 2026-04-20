@@ -154,19 +154,16 @@ Open `report.html` in any browser — it's fully self-contained with no external
 
 ```
 Purple_Lab_Lite/
-├── docker-compose.yml          # Defines all containers
-├── report.py                   # Detection report generator
 ├── README.md
 └── infra/
+    ├── docker-compose.yml          # Defines all containers
+    ├── Dockerfile      
     ├── filebeat.yml            # Filebeat config (must be owned by root)
-    ├── elastic/
-    │   └── ...                 # Elasticsearch config / detection rules
+    ├── report.py                   # Detection report generator
     ├── attack-scripts/
     │   ├── sqli_attack.sh      # SQL injection via curl (T1190)
     │   ├── port_scan.sh        # Network recon via nmap (T1046)
     │   └── bruteforce_attack.sh# HTTP brute force via curl (T1110.001)
-    └── dvwa/
-        └── ...                 # DVWA container config
 ```
 
 ---
