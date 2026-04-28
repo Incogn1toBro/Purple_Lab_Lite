@@ -65,7 +65,7 @@ Purple Lab Lite bridges the gap between offensive emulation and defensive valida
 
 ```bash
 git clone https://github.com/Incogn1toBro/Purple_Lab_Lite
-cd Purple_Lab_Lite
+cd Purple_Lab_Lite/infra
 
 # Filebeat requires strict ownership
 sudo chown root ./infra/filebeat.yml
