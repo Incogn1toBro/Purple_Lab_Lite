@@ -68,11 +68,11 @@ git clone https://github.com/Incogn1toBro/Purple_Lab_Lite
 cd Purple_Lab_Lite/infra
 
 # Filebeat requires strict ownership
-sudo chown root ./infra/filebeat.yml
-sudo chmod go-w ./infra/filebeat.yml
+sudo chown root ./filebeat.yml
+sudo chmod go-w ./filebeat.yml
 
 # Make attack scripts executable
-sudo chmod +x ./infra/attack-scripts/*
+sudo chmod +x ./attack-scripts/*
 ```
 
 ### 2 — Start the lab
