@@ -6,7 +6,7 @@
 #
 # Usage  : ./bruteforce_attack.sh
 #          Edit TARGET below before running.
-#          Run via: sudo docker exec -it attacker /script/bruteforce_attack.sh
+#          Run via: sudo docker exec -it attacker /scripts/bruteforce_attack.sh
 # =============================================================================
 
 TARGET="INSERT DVWA IP ADDRESS:8080"
