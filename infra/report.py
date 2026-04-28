@@ -53,11 +53,15 @@ PLAYBOOKS = [
         "mitre": "T1110.001",
         "tactic": "Credential Access",
         "tool": "curl (custom)",
-        # bruteforce.sh hammers POST /login.php with many user_token + credential pairs.
-        # Each failed attempt returns a redirect back to login.php (Location header).
-        # Successful login redirects to index.php. All requests carry a PHPSESSID cookie.
-        "keywords": ["login.php", "PHPSESSID", "Login=Login", "user_token"],
-        "min_hits": 10,
+        # Each failed brute force attempt produces exactly one Apache log entry:
+        #   POST /login.php HTTP/1.1" 302 281
+        # The 302 is DVWA redirecting back to login.php on a bad password.
+        # A successful login also produces a 302 but to index.php — still counted.
+        # Using the full phrase "POST /login.php HTTP/1.1\" 302" avoids matching:
+        #   - GET /login.php entries (page loads / redirect follows)
+        #   - The legitimate single login from the sqli script
+        "keywords": ['POST /login.php HTTP/1.1" 302'],
+        "min_hits": 5,
     },
 ]
 
